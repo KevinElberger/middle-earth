@@ -11,7 +11,7 @@ class ArticlesController extends Controller
 {
     public function index() {
 
-        $articles = Article::latest()->get();
+        $articles = Article::latest()->published()->get();
 
         return view('articles.index', compact('articles'));
     }
@@ -28,11 +28,16 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
-    public function store() {
 
-        $input = Request::all();
+    /**
+     * Saves an article.
+     *
+     * @param Requests\CreateArticleRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(Requests\CreateArticleRequest $request) {
 
-        Article::create($input);
+        Article::create(Request::all());
 
         return redirect('articles');
     }
