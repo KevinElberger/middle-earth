@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Article;
-use Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -37,8 +36,15 @@ class ArticlesController extends Controller
      */
     public function store(Requests\CreateArticleRequest $request) {
 
-        Article::create(Request::all());
+        Article::create($request->all());
 
         return redirect('articles');
+    }
+
+    public function edit() {
+
+        $article = 
+
+        return view('articles.edit');
     }
 }
