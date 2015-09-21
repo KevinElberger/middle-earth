@@ -22,7 +22,7 @@ class ArticlesController extends Controller
 
         $article = Article::findOrFail($id);
 
-        return view('articles.show', compact($article));
+        return view('articles.show', compact('article'));
     }
 
     public function create() {
