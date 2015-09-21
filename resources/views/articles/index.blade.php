@@ -5,7 +5,7 @@
 
     <hr/>
 
-    @foreach ($articles as $article)
+    @foreach($articles->all() as $article)
         <article>
             <h2>
                 <a href="{{ url('/articles', $article->id) }}">{{ $article->title }}</a>

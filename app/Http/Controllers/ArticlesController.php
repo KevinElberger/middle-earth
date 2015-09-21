@@ -10,7 +10,10 @@ class ArticlesController extends Controller
 {
     public function index() {
 
-        $articles = Article::latest()->published()->get();
+        // Fix this later
+        // $articles = Article::latest()->published()->get();
+
+        $articles = Article::latest()->get();
 
         return view('articles.index', compact('articles'));
     }
@@ -42,8 +45,6 @@ class ArticlesController extends Controller
     }
 
     public function edit() {
-
-        $article = 
 
         return view('articles.edit');
     }
