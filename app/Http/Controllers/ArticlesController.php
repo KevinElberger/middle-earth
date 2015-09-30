@@ -12,6 +12,12 @@ use App\Http\Controllers\Controller;
 class ArticlesController extends Controller
 {
 
+    // Triggers authentication middleware
+    public function __construct() {
+        $this->middleware('auth', ['only' => 'create']);
+    }
+
+
     /**
      * Display all articles.
      *
@@ -27,6 +33,7 @@ class ArticlesController extends Controller
         return view('articles.index', compact('articles'));
     }
 
+
     /**
      * Display a specific article.
      *
@@ -40,12 +47,14 @@ class ArticlesController extends Controller
         return view('articles.show', compact('article'));
     }
 
+
     /**
      * Create an article.
      *
      * @return \Illuminate\View\View
      */
     public function create() {
+
 
         return view('articles.create');
     }
@@ -54,15 +63,20 @@ class ArticlesController extends Controller
     /**
      * Saves an article.
      *
-     * @param Requests\CreateArticleRequest $request
+     * @param Requests\ArticleRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(ArticleRequest $request) {
 
-        Article::create($request->all());
+        // Create article with attributes from the form
+        $article = new Article($request->all());
+
+        // Get the authenticated user's articles and save a new article
+        \Auth::user()->articles()->save($article);
 
         return redirect('articles');
     }
+
 
     /**
      *  Edits an article.
@@ -76,6 +90,7 @@ class ArticlesController extends Controller
 
         return view('articles.edit', compact('article'));
     }
+
 
     /**
      * Update an existing article.
