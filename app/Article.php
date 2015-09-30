@@ -11,7 +11,8 @@ class Article extends Model
     protected $fillable = [
         'title',
         'body',
-        'published_at'
+        'published_at',
+        'user_id'
     ];
 
     // Treats 'published_at' as a Carbon instance
@@ -36,5 +37,14 @@ class Article extends Model
     public function setPublishedAtAttribute($date) {
 
         $this -> attributes['published_at'] = Carbon::parse($date);
+    }
+
+    /**
+     * An article is owned by a user.
+     *
+     */
+    public function user() {
+
+        $this->belongsTo('App\User');
     }
 }
