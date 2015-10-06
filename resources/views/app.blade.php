@@ -7,9 +7,18 @@
 
     <body>
         <div class="container">
-           @yield('content')
+            @include('flash::message')
+
+            @yield('content')
         </div>
 
+        <script src="//code.jquery.com/jquery.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <script>
+            $('div.alert').not('.alert-important').delay(3000).slideUp(200);
+
+        </script>
         @yield('footer')
     </body>
 </head>

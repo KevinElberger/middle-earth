@@ -72,6 +72,9 @@ class ArticlesController extends Controller
         // Get the authenticated user's articles and save a new article
         \Auth::user()->articles()->save($article);
 
+        // Flash message that is displayed when an article is successfully created
+        flash()->success('Your article has been created');
+
         return redirect('articles');
     }
 
