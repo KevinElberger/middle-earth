@@ -15,3 +15,9 @@
         </article>
     @endforeach
 @stop
+
+<style>
+    h1 {
+        text-align: center;
+    }
+</style>
