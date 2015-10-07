@@ -17,16 +17,18 @@
                 <hr />
 
                 <div id="animated-example" class="animated fadeIn">
-                    <div class="btn-group" role="group">
-
                         @if(\Auth::user())
-                            <a href="/articles">
-                                <button type="button" class="btn btn-default btn-lg">Home</button>
-                            </a>
+                            <div class="btn-group" role="group">
+                                <a href="/articles">
+                                    <button type="button" class="btn btn-default btn-lg">Home</button>
+                                </a>
+                            </div>
                         @else
-                            <a href="/auth/login">
-                                <button type="button" class="btn btn-default btn-lg">Log In</button>
-                            </a>
+                            <div class="btn-group" role="group">
+                                <a href="/auth/login">
+                                    <button type="button" class="btn btn-default btn-lg">Log In</button>
+                                </a>
+                            </div>
 
                             <div class="btn-group" role="group">
                                 <a href="/auth/register">

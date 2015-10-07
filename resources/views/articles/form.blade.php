@@ -14,5 +14,9 @@
 </div>
 
 <div class="form-group">
+    {!! Form::hidden('user_name', $user->name) !!}
+</div>
+
+<div class="form-group">
     {!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
 </div>

@@ -53,8 +53,9 @@ class ArticlesController extends Controller
      */
     public function create() {
 
+        $user = \Auth::user();
 
-        return view('articles.create');
+        return view('articles.create', compact('user'));
     }
 
 
@@ -69,6 +70,7 @@ class ArticlesController extends Controller
         // Create article with attributes from the form
         $article = new Article($request->all());
 
+        $article['user_name'] = $_REQUEST['user_name'];
         // Get the authenticated user's articles and save a new article
         \Auth::user()->articles()->save($article);
 

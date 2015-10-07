@@ -15,9 +15,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/articles/create">Create an Article</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact Us</a></li>
-                    <li><a href="/logout">Log out</a></li>
+                    <li><a href="/auth/logout">Log out</a></li>
                 </ul>
             </div>
         </div>
