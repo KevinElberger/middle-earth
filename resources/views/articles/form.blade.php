@@ -14,6 +14,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('tags', 'Tags:') !!}
+    {!! Form::select('tags', $tags, null, ['class' => 'form-control', 'multiple']) !!}
+</div>
+
+<div class="form-group">
     {!! Form::hidden('user_name', $user->name) !!}
 </div>
 

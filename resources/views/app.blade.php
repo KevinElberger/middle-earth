@@ -74,7 +74,7 @@
 
     .container {
         position: relative;
-        transform: translateY(10%);
+        transform: translateY(5%);
     }
 
     .footer-distributed{

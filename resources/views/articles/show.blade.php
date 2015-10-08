@@ -26,6 +26,15 @@
             </p>
         </div>
     </div>
+
+    @unless ($article->$tags->isEmpty())
+        <p>Tags: </p>
+        <ul>
+            @foreach ($article->tags as $tag)
+                <li>{{ $tag->name }}</li>
+            @endforeach
+        </ul>
+    @endunless
 @stop
 
 <style>

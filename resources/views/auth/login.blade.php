@@ -62,7 +62,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 <style>
@@ -86,3 +85,4 @@
         font-size: 46px;
     }
 </style>
+
