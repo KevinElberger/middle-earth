@@ -10,6 +10,14 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+
+    protected $fillable = array(
+        'name',
+        'email',
+        'password',
+        // mass assign
+    );
+
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -17,8 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 60);
-            $table->rememberToken();
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

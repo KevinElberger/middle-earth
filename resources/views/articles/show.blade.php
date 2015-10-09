@@ -17,7 +17,7 @@
 
     <div id="bottom">
         <div id="created_by">
-            <p>Article created by: {{ $article->user_name }}</p>
+            <p>Article created by: {{ $user[0]->name }}</p>
         </div>
 
         <div id="created_at">
@@ -27,14 +27,14 @@
         </div>
     </div>
 
-    @unless ($article->$tags->isEmpty())
-        <p>Tags: </p>
-        <ul>
-            @foreach ($article->tags as $tag)
-                <li>{{ $tag->name }}</li>
-            @endforeach
-        </ul>
-    @endunless
+    {{--@unless ($article->$tags->isEmpty())--}}
+        {{--<p>Tags: </p>--}}
+        {{--<ul>--}}
+            {{--@foreach ($article->tags as $tag)--}}
+                {{--<li>{{ $tag->name }}</li>--}}
+            {{--@endforeach--}}
+        {{--</ul>--}}
+    {{--@endunless--}}
 @stop
 
 <style>

@@ -15,6 +15,13 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         // $this->call(UserTableSeeder::class);
+        DB::table('tags')->insert([
+            'id' => 1,
+            'name' => 'nameoftag',
+            'created_at'    =>  time(),
+            'updated_at'    =>  time(),
+        ]);
+
 
         Model::reguard();
     }

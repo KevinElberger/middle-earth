@@ -42,7 +42,9 @@ class ArticlesController extends Controller
      */
     public function show(Article $article) {
 
-        return view('articles.show', compact('article'));
+        $user = \App\User::where(['id' => $article['user_id']])->get();
+
+        return view('articles.show', compact('article', 'user'));
     }
 
 
@@ -55,9 +57,11 @@ class ArticlesController extends Controller
 
         $user = \Auth::user();
 
+        $user_name = \Auth::user(['name']);
+
         $tags = \App\Tag::lists('name', 'id');
 
-        return view('articles.create', compact('user', 'tags'));
+        return view('articles.create', compact('user', 'tags', 'user_name'));
     }
 
 
@@ -69,25 +73,22 @@ class ArticlesController extends Controller
      */
     public function store(ArticleRequest $request) {
 
+        // Grab tag ID numbers to store
+        //$tagIDs = $request->input('tags');
+
         // Create article with attributes from the form
         //$article = new Article($request->all());
 
-//        $article['user_name'] = $_REQUEST['user_name'];
-//        // Get the authenticated user's articles and save a new article
-//        \Auth::user()->articles()->save($article);
-
         //$article['user_name'] = $_REQUEST['user_name'];
+        // Get the authenticated user's articles and save a new article
+        //\Auth::user()->articles()->save($article);
 
-        // Grab tag ID numbers to store
-        $tagIDs = $request->input('tags');
+        $article = \Auth::user()->articles()->create($request->all());
 
-        \Auth::user()->articles()->create([$request->all(), 'user_name' => $_REQUEST['user_name']])->tags()->attach($tagIDs);
 
         // Flash message that is displayed when an article is successfully created
         flash()->success('Your article has been created');
 
-
-//        $article->tags()->attach($tagIDs);
 
         return redirect('articles');
     }

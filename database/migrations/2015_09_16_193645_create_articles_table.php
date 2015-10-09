@@ -10,15 +10,27 @@ class CreateArticlesTable extends Migration
      *
      * @return void
      */
+
+    protected $fillable = array(
+        'name',
+        'email',
+        'password',
+        'user_name',
+        'title',
+        'body',
+        'published_at',
+        // mass assign
+    );
+
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
+
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('user_name');
             $table->string('title');
-            $table->text('body');
-            $table->timestamps();
+            $table->string('body');
+            $table->nullableTimestamps();
             $table->timestamp('published_at');
 
             $table->foreign('user_id')
