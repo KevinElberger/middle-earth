@@ -15,6 +15,16 @@
 
     <hr />
 
+    <br />
+    @unless ($article->tags->isEmpty())
+    <p>Tags: </p>
+    <ul>
+        @foreach ($article->tags as $tag)
+            <li>{{ $tag->name }}</li>
+        @endforeach
+    </ul>
+    @endunless
+
     <div id="bottom">
         <div id="created_by">
             <p>Article created by: {{ $user[0]->name }}</p>
@@ -26,15 +36,6 @@
             </p>
         </div>
     </div>
-
-    {{--@unless ($article->$tags->isEmpty())--}}
-        {{--<p>Tags: </p>--}}
-        {{--<ul>--}}
-            {{--@foreach ($article->tags as $tag)--}}
-                {{--<li>{{ $tag->name }}</li>--}}
-            {{--@endforeach--}}
-        {{--</ul>--}}
-    {{--@endunless--}}
 @stop
 
 <style>

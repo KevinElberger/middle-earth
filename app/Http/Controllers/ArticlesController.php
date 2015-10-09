@@ -44,7 +44,11 @@ class ArticlesController extends Controller
 
         $user = \App\User::where(['id' => $article['user_id']])->get();
 
-        return view('articles.show', compact('article', 'user'));
+//        $tags = \App\Tag::where(['article_id' => $article['id']]);
+
+        $tags = $article['tags'];
+
+        return view('articles.show', compact('article', 'user', 'tags'));
     }
 
 
@@ -73,8 +77,10 @@ class ArticlesController extends Controller
      */
     public function store(ArticleRequest $request) {
 
+        $article = \Auth::user()->articles()->create($request->all());
+
         // Grab tag ID numbers to store
-        //$tagIDs = $request->input('tags');
+        $tagIDs = $request->input('tags');
 
         // Create article with attributes from the form
         //$article = new Article($request->all());
@@ -83,8 +89,8 @@ class ArticlesController extends Controller
         // Get the authenticated user's articles and save a new article
         //\Auth::user()->articles()->save($article);
 
-        $article = \Auth::user()->articles()->create($request->all());
 
+        $article->tags()->attach($tagIDs);
 
         // Flash message that is displayed when an article is successfully created
         flash()->success('Your article has been created');

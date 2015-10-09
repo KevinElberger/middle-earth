@@ -23,6 +23,6 @@ class Tag extends Model
      */
     public function articles() {
 
-        $this->belongsToMany('App\Article');
+        return $this->belongsToMany('App\Article');
     }
 }
