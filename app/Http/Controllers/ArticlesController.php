@@ -31,7 +31,7 @@ class ArticlesController extends Controller
         // Fix this later
         // $articles = Article::latest()->published()->get();
 
-        $articles = Article::latest()->get();
+        $articles = Article::latest()->simplePaginate(7);
 
         return view('articles.index', compact('articles'));
     }

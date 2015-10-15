@@ -13,9 +13,10 @@
                 @include('flash::message')
 
                 @yield('content')
-            </div>
+
 
             @yield('footer')
+            </div>
 
             <footer class="footer-distributed">
 
@@ -46,37 +47,40 @@
                 </div>
 
             </footer>
-            <script src="//code.jquery.com/jquery.js"></script>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+                <script src="//code.jquery.com/jquery.js"></script>
+                <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+                <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-            <script type="text/javascript">
-                $('#tag_list').select2({
-                    placeholder: 'Choose a tag',
-                    tags: true
-                });
+                <script type="text/javascript">
+                    $('#tag_list').select2({
+                        placeholder: 'Choose a tag',
+                        tags: true
+                    });
 
-                $('div.alert').not('.alert-important').delay(3000).slideUp(400);
-            </script>
-
+                    $('div.alert').not('.alert-important').delay(3000).slideUp(400);
+                </script>
         </body>
-</html>
+    </html>
 
 <style>
-    html {
+    html,
+    body {
         position: relative;
-        min-height: 100%;
     }
     body {
         margin: 0 0 140px; /* bottom = footer height */
     }
     footer {
-        position: absolute;
+        /*position: absolute;*/
         padding-top: 10px;
         height: 140px;
         width: 100%;
         bottom: 0;
         left: 0;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-position: 0% 0%;
+        position: fixed;
     }
 
     .container {
