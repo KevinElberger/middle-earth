@@ -131,7 +131,6 @@ class ArticlesController extends Controller
      * @param array $tags
      */
     private function syncTags(Article $article, array $tags) {
-
         $article->tags()->sync($tags);
     }
 
@@ -147,6 +146,7 @@ class ArticlesController extends Controller
         $article = \Auth::user()->articles()->create($request->all());
 
         $this->syncTags($article, $request->input('tag_list'));
+
 
         return $article;
     }
