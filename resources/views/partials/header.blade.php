@@ -15,9 +15,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/{{ \Auth::user()->name }}">{{ \Auth::user()->name }}</a></li>
                     <li><a href="/articles/create">Create an Article</a></li>
                     <li><a href="/about">About</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
                     <li><a href="/auth/logout">Log out</a></li>
                 </ul>
             </div>
@@ -42,7 +43,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="/pages/contact">Contact Us</a></li>
                     <li><a href="/auth/login">Log In</a></li>
                 </ul>
             </div>
