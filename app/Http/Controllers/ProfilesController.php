@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class ProfilesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a user's profile page.
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,17 +26,7 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a newly created profile.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -44,19 +34,9 @@ class ProfilesController extends Controller
     public function store(Request $request)
     {
         $user = \Auth::user()->profiles()->create($request->all());
+        flash()->success('Your profile has been created!');
 
         return redirect('articles');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -77,9 +57,13 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
+        $user = \Auth::user()->profiles()->update($request->except('_token'));
+        flash()->success('Your profile has been updated!');
+
+        return redirect('articles');
     }
 
     /**

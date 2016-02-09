@@ -10,6 +10,7 @@ Route::post('pages/profile/store', 'PagesController@store');
 
 Route::get('profiles/index/{id}', 'ProfilesController@index');
 Route::post('profiles/index/{id}', 'ProfilesController@store');
+Route::post('profiles/update', 'ProfilesController@update');
 Route::resource('articles', 'ArticlesController');
 
 Route::controllers([
