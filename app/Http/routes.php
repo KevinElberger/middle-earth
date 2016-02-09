@@ -6,6 +6,10 @@ Route::get('/', function() {
 Route::get('about', 'PagesController@about');
 Route::get('contact', 'PagesController@contact');
 Route::get('pages/profile/{id}', 'PagesController@user');
+Route::post('pages/profile/store', 'PagesController@store');
+
+Route::get('profiles/index/{id}', 'ProfilesController@index');
+Route::post('profiles/index/{id}', 'ProfilesController@store');
 Route::resource('articles', 'ArticlesController');
 
 Route::controllers([

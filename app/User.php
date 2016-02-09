@@ -47,4 +47,13 @@ class User extends Model implements AuthenticatableContract,
 
         return $this->hasMany('App\Article');
     }
+
+    /**
+     * A user can have one profile.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profiles() {
+        return $this->hasOne('App\Profile');
+    }
 }

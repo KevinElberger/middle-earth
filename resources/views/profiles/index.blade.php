@@ -5,7 +5,6 @@
     <br/>
     <br/>
     <div class="container">
-{{--        {{dd($user)}}--}}
         <img src="{{ $url }}" alt="profile image" />
         <h1>{{ $user['name'] }}'s Profile</h1>
         @if(\Auth::user()->name == $user['name'])
@@ -14,9 +13,9 @@
         <hr />
         <div id="innercontainer">
             {{-- If user has a profile, display it. --}}
-            @if(!is_null(\Auth::user(['profile'])))
+            @if(!is_null($prof))
                 <div class="well" id="profileText">
-                    {{ \Auth::user()->profile }}
+                    {{ $prof->profile }}
                 </div>
             @endif
         </div>
@@ -29,7 +28,7 @@
             $('#editProfile').click(function() {
                 $('#innercontainer').append(
                         '<div id="profileContent"><br/>' +
-                        '<form action="http://localhost:8888/pages/profile/store" method="post">' +
+                        '<form action="http://localhost:8888/profiles/index/{{ $user->id }}" method="post">' +
                         '<textarea name="profile" id ="profile" class="form-control" placeholder="Edit your profile" />' +
                         '<br/><br/>' +
                         '<input type="submit" id="saveContent" class="btn btn-primary form-control" value="submit"/>' +

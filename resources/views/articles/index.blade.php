@@ -4,7 +4,6 @@
     <h1>Articles</h1>
 
     <hr/>
-
     @foreach($articles->all() as $article)
         <article>
             <h2>
