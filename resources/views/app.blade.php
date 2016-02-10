@@ -85,8 +85,8 @@
     }
 
     .container {
-        position: relative;
-        transform: translateY(10%);
+        padding-top: 40px;
+        padding-bottom: 10px;
     }
 
     .footer-distributed{

@@ -4,9 +4,9 @@
 
     <br/>
     <br/>
-    <div class="container">
+    <div class="cont">
         <img src="{{ $url }}" alt="profile image" />
-        <h1>{{ $user['name'] }}'s Profile</h1>
+        <h1>{{ ucfirst($user['name']) }}'s Profile</h1>
         @if(\Auth::user()->name == $user['name'])
             <button id="editProfile" class="btn btn-primary">Edit Profile</button>
         @endif
@@ -25,7 +25,7 @@
         $(function() {
             // Add text area and save button when edit profile button is clicked.
             // Also removes the edit button upon click.
-            if($('#profileText') == null) {
+            if($('#profileText').text() == '') {
                 $('#editProfile').click(function () {
                     $('#innercontainer').append(
                             '<div id="profileContent"><br/>' +
@@ -64,7 +64,8 @@
         text-align: center;
     }
 
-    .container {
+    .cont {
         text-align: center;
+        padding-top: 20px;
     }
 </style>

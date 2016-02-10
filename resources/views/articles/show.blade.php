@@ -27,7 +27,7 @@
 
     <div id="bottom">
         <div id="created_by">
-            <p>Article created by: {{ $user[0]->name }}</p>
+            <p>Article created by: <a href="/profiles/index/{{ $user[0]->id }}">{{ $user[0]->name }}</a></p>
         </div>
 
         <div id="created_at">
