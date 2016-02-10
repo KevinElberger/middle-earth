@@ -42,13 +42,15 @@ class UrlController extends Controller
      */
     public function store(Request $request)
     {
-        $user = \App\User::where(['id' => $request['id']])->get();
-//        $articles = \App\Article::where(['user_id' => $user['id']]);
+        $user = \App\User::where(['name' => $request['name']])->get();
+        $id = $user[0]['id'];
+        $articles = \App\Article::where(['user_id' => $id])->get();
 
         return response()->json([
            'error' => false,
             'user' => $user,
-//            'articles' => $articles,
+            'articles' => $articles,
+            'profile' => '',
         ]);
     }
 
