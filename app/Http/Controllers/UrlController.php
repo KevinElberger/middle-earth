@@ -21,7 +21,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        return 'lol';
+        //
     }
 
     /**
@@ -45,12 +45,13 @@ class UrlController extends Controller
         $user = \App\User::where(['name' => $request['name']])->get();
         $id = $user[0]['id'];
         $articles = \App\Article::where(['user_id' => $id])->get();
+        $profile = \App\Profile::where(['user_id' => $id])->get()->first();
 
         return response()->json([
            'error' => false,
             'user' => $user,
             'articles' => $articles,
-            'profile' => '',
+            'profile' => $profile,
         ]);
     }
 
