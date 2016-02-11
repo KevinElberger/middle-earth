@@ -18,6 +18,7 @@ Route::controllers([
     'password' => 'Auth\PasswordController'
 ]);
 
+Route::get('/api/v1/url/article', 'UrlController@article');
 Route::group(array('prefix' => 'api/v1'), function() {
     Route::resource('url', 'UrlController');
 });
