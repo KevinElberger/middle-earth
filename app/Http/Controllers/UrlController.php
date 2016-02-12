@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class UrlController extends Controller
 {
@@ -15,7 +15,7 @@ class UrlController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Return a JSON response of the most recent article.
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +29,27 @@ class UrlController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Creates an article via API request.
+     * Manually pulls the authenticated
+     * user for the user_id attribute.
+     *
+     * @param $request
+     * @return mixed
+     */
+    public function create(Request $request)
+    {
+        $article = \Auth::user()->articles()->create($request->all(['user_id' => \Auth::user('id'),
+                                                                    'created_at' => Carbon::now(),
+                                                                    'updated_at' => Carbon::now(),
+                                                                    'published_at' => Carbon::parse($request->published_at)]));
+
+        return response()->json([
+            'new_article' => $article,
+        ]);
+    }
+
+    /**
+     * Returns a JSON response of a requested user.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

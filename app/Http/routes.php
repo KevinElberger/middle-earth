@@ -19,6 +19,7 @@ Route::controllers([
 ]);
 
 Route::get('/api/v1/url/article', 'UrlController@article');
+Route::post('/api/v1/url/article', 'UrlController@create');
 Route::group(array('prefix' => 'api/v1'), function() {
     Route::resource('url', 'UrlController');
 });
