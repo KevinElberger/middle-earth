@@ -1,27 +1,16 @@
-## Laravel PHP Framework
+## Middle Earth Web Application
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Middle Earth is a web application that allows users to create, read, and update articles that can be read by other users. Middle Earth provides an enjoyable way for people to express themselves via their writing and tries to streamline the process of posting articles on the web.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Users can also create and update their own personal profiles that can be viewed by other users. This is helpful for people who want more insight about hte author of the articles that they have read. Users can also implement their own personal avatars via Gravatar if they so choose.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## API
+Middle Earth also comes equipped with some API functionality that is paired with the associated Java stand-alone application of the same name. Some of the API functionality is documented below:
 
-## Official Documentation
+## Users
+By sending an HTTP POST request to "/api/v1/url" with the name of a Middle Earth user, a JSON response will be issued containing relevant information about the user. The specific information will be the user's information, such as their name, ID, the time of their creation, and their email.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Articles
+Sending an HTTP GET request to "/api/v1/url/article", a JSON response of the most recent article posted to the site will be returned.
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Also, sending an HTTP POST to "/api/v1/url/article" will allow users to create an article by passing the relevant information needed to create an article. The parameters needed are: title, body, and the published_at date.
