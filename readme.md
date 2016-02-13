@@ -10,6 +10,7 @@ Middle Earth also comes equipped with some API functionality that is paired with
 ## Users
 By sending an HTTP POST request to "/api/v1/url" with the name of a Middle Earth user, a JSON response will be issued containing relevant information about the user. The specific information will be the user's information, such as their name, ID, the time of their creation, and their email.
 
+Users can now update their profile via the API by sending an HTTP POST request to "/api/v1/profile" with the profile text they would like to have in their profile.
 ## Articles
 Sending an HTTP GET request to "/api/v1/url/article", a JSON response of the most recent article posted to the site will be returned.
 
