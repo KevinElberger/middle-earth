@@ -72,7 +72,7 @@ class UrlController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show() {
@@ -88,10 +88,12 @@ class UrlController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function createProfile(Request $request) {
-        $user = \Auth::user()->profiles()->create($request->all());
+
+        $profile = \Auth::user()->profiles()->create($request->all(['user_id' => \Auth::user('id')]));
 
         return response()->json([
-            'response' => 'Profile updated successfully!'
+            'response' => 'Profile updated successfully!',
+            'profile' => $profile,
         ]);
     }
 }

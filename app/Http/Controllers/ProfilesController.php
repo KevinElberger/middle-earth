@@ -16,7 +16,7 @@ class ProfilesController extends Controller
     public function index($idNum)
     {
         $user = \App\User::where(['id' => $idNum])->get()->first();
-        $prof = \App\Profile::where(['user_id' => $idNum])->get()->first();
+        $prof = \App\Profile::where(['user_id' => $idNum])->get()->last();
 
         $url = 'http://www.gravatar.com/avatar/';
         $url .= md5( strtolower(trim($user['email'])));
