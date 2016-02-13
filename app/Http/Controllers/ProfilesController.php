@@ -51,7 +51,7 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the user's profile.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id

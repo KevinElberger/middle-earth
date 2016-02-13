@@ -80,4 +80,18 @@ class UrlController extends Controller
             'authenticated' => 'true',
         ]);
     }
+
+    /**
+     * Create a user profile via API request.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function createProfile(Request $request) {
+        $user = \Auth::user()->profiles()->create($request->all());
+
+        return response()->json([
+            'response' => 'Profile updated successfully!'
+        ]);
+    }
 }
