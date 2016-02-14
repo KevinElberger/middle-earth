@@ -48,6 +48,7 @@
                     <li><a href="#">About</a></li>
                     <li><a href="/pages/contact">Contact Us</a></li>
                     <li><a href="/auth/login">Log In</a></li>
+                    <li><a href="/auth/register">Register</a></li>
                 </ul>
             </div>
         </div>

@@ -12,7 +12,8 @@ class Article extends Model
         'title',
         'body',
         'published_at',
-        'user_id'
+        'user_id',
+        'tag_list'
     ];
 
     // Treats 'published_at' as a Carbon instance
@@ -46,26 +47,5 @@ class Article extends Model
     public function user() {
 
         $this->belongsTo('App\User');
-    }
-
-
-    /**
-     * Get the tags associated with an article.
-     *
-     */
-    public function tags() {
-
-        return $this->belongsToMany('App\Tag')->withTimestamps();
-    }
-
-
-    /**
-     * Get a list of tag ids associated with an article.
-     *
-     * @return array
-     */
-    public function getTagListAttribute() {
-
-        return $this->tags->lists('id');
     }
 }

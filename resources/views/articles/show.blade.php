@@ -1,29 +1,19 @@
 @extends('app')
 
 @section('content')
-
     <br />
-
     <h1>{{ $article->title }}</h1>
-
     <hr />
-
         <article>
             {{ $article->body }}
             {{ $article->name }}
         </article>
-
     <hr />
-
     <br />
-    @unless ($article->tags->isEmpty())
-    <p>Tags: </p>
+    <p>Tag:</p>
     <ul>
-        @foreach ($article->tags as $tag)
-            <li>{{ $tag->name }}</li>
-        @endforeach
+        <li>{{ $article->tag_list }}</li>
     </ul>
-    @endunless
 
     <div id="bottom">
         <div id="created_by">

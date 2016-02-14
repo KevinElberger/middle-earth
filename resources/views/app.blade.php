@@ -55,7 +55,8 @@
                 <script type="text/javascript">
                     $('#tag_list').select2({
                         placeholder: 'Choose a tag',
-                        tags: true
+                        tags: false,
+                        maximumSelectionLength: 1,
                     });
 
                     $('div.alert').not('.alert-important').delay(3000).slideUp(400);

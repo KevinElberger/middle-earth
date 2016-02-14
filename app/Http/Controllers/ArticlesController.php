@@ -20,22 +20,16 @@ class ArticlesController extends Controller
         $this->middleware('auth', ['only' => 'create']);
     }
 
-
     /**
      * Display all articles.
      *
      * @return \Illuminate\View\View
      */
     public function index() {
-
-        // Fix this later
-        // $articles = Article::latest()->published()->get();
-
         $articles = Article::latest()->simplePaginate(7);
 
         return view('articles.index', compact('articles'));
     }
-
 
     /**
      * Display a specific article.
@@ -44,16 +38,10 @@ class ArticlesController extends Controller
      * @return \Illuminate\View\View
      */
     public function show(Article $article) {
-
         $user = \App\User::where(['id' => $article['user_id']])->get();
-
-//        $tags = \App\Tag::where(['article_id' => $article['id']]);
-
-        $tags = $article['tags'];
 
         return view('articles.show', compact('article', 'user', 'tags'));
     }
-
 
     /**
      * Create an article.
@@ -61,16 +49,13 @@ class ArticlesController extends Controller
      * @return \Illuminate\View\View
      */
     public function create() {
-
         $user = \Auth::user();
-
         $user_name = \Auth::user(['name']);
 
-        $tags = \App\Tag::lists('name', 'id');
+        $tags = ['work', 'personal', 'programming', 'middle earth', 'school'];
 
         return view('articles.create', compact('user', 'tags', 'user_name'));
     }
-
 
     /**
      * Saves an article.
@@ -79,7 +64,6 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(ArticleRequest $request) {
-
         $this->createArticle($request);
 
         // Flash message that is displayed when an article is successfully created
@@ -89,7 +73,6 @@ class ArticlesController extends Controller
         return redirect('articles');
     }
 
-
     /**
      *  Edits an article.
      *
@@ -97,16 +80,11 @@ class ArticlesController extends Controller
      * @return \Illuminate\View\View
      */
     public function edit(Article $article) {
-
         $user = \Auth::user();
-
-        $user_name = \Auth::user(['name']);
-
         $tags = \App\Tag::lists('name', 'id');
 
         return view('articles.edit', compact('article', 'tags', 'user'));
     }
-
 
     /**
      * Update an existing article.
@@ -116,38 +94,30 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Article $article, ArticleRequest $request) {
-
         $article->update($request->all());
-
-        $this->syncTags($article, $request->input('tag_list'));
 
         return redirect('articles');
     }
 
     /**
-     * Sync up the list of tags in the database.
-     *
-     * @param Article $article
-     * @param array $tags
-     */
-    private function syncTags(Article $article, array $tags) {
-        $article->tags()->sync($tags);
-    }
-
-
-    /**
      * Save a new article.
      *
      * @param ArticleRequest $request
-     * @return mixed
+     *
      */
     public function createArticle(ArticleRequest $request) {
-
-        $article = \Auth::user()->articles()->create($request->all());
-
-        $this->syncTags($article, $request->input('tag_list'));
-
-
+        if ($request['tag_list'] == 0) {
+            $request['tag_list'] = "work";
+        } else if($request['tag_list'] == 1) {
+            $request['tag_list'] = "personal";
+        } else if($request['tag_list'] == 2) {
+            $request['tag_list'] = "programming";
+        } else if($request['tag_list'] == 3) {
+            $request['tag_list'] = "middle earth";
+        } else if($request['tag_list'] == 4) {
+            $request['tag_list'] = "school";
+        }
+        $article = \Auth::user()->articles()->create($request->all(['tag_list' => 'test']));
         return $article;
     }
 }

@@ -30,8 +30,10 @@ class CreateArticlesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->string('body');
+            $table->string('tag_list');
             $table->nullableTimestamps();
             $table->timestamp('published_at');
+
 
             $table->foreign('user_id')
                   ->references('id')
