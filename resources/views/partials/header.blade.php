@@ -1,6 +1,9 @@
 @if(\Auth::user())
     <?php
-        $user = str_replace(' ', '', \Auth::user()->name)
+        $user = str_replace(' ', '', \Auth::user()->name);
+        $id = \Auth::User()->id;
+        $profileURL = "/profiles/index/";
+        $profileURL .=  $id;
     ?>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -49,10 +52,15 @@
                         <h4 class="modal-title" id="myModalLabel">Edit Your Profile</h4>
 
                     </div>
-                    <div class="modal-body">...</div>
+                    <div class="modal-body">
+                        {!! Form::open(['url' => $profileURL]) !!}
+                        {!! Form::label('profile', 'Bio:') !!}
+                        {!! Form::textarea('profile', null, ['class' => 'form-control', 'placeholder' => 'Write here...']) !!}
+                    </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
+                        {!! Form::submit('Save Changes', ['id' => 'littleButton', 'class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>
@@ -93,5 +101,9 @@
         /* To center horizontally */
         margin: 0 auto;
         pointer-events:all;
+    }
+
+    .modal-title {
+        text-align: center;
     }
 </style>
