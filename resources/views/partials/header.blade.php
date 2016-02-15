@@ -18,7 +18,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/profiles/index/{{ \Auth::user()->id }}">{{ ucfirst(\Auth::user()->name) }}</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            {{ ucfirst(\Auth::user()->name) }}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/profiles/index/{{ \Auth::user()->id }}">Profile</a></li>
+                            <li><a href="#editProfile" data-toggle="modal">Edit Profile</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/articles/create">Create an Article</a></li>
                     <li><a href="/about">About</a></li>
                     <li><a href="/contact">Contact Us</a></li>
@@ -28,6 +37,27 @@
         </div>
     </nav>
     <br/>
+    <!-- Modal window for editing profile. -->
+    <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Your Profile</h4>
+
+                    </div>
+                    <div class="modal-body">...</div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @else
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -55,3 +85,13 @@
     </nav>
     <br/>
 @endif
+<style>
+    .modal-content {
+        /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+        width:inherit;
+        height:inherit;
+        /* To center horizontally */
+        margin: 0 auto;
+        pointer-events:all;
+    }
+</style>

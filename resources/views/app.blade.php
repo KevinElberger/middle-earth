@@ -37,11 +37,9 @@
                     <p class="footer-links">
                         <a href="#">Home</a>
                         ·
-                        <a href="#">About</a>
+                        <a href="/about">About</a>
                         ·
-                        <a href="#">Faq</a>
-                        ·
-                        <a href="#">Contact</a>
+                        <a href="/contact">Contact</a>
                     </p>
 
                     <p>Middle Earth &copy; 2015</p>
@@ -83,6 +81,10 @@
         background-attachment: scroll;
         background-position: 0% 0%;
         position: fixed;
+    }
+
+    li {
+        text-align: center;
     }
 
     .container {
