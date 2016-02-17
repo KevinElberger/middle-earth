@@ -58,6 +58,11 @@
                     });
 
                     $('div.alert').not('.alert-important').delay(3000).slideUp(400);
+
+
+                    $(".clickable-row").click(function() {
+                        window.document.location = $(this).data("href");
+                    });
                 </script>
         </body>
     </html>

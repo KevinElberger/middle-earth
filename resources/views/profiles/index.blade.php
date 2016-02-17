@@ -27,8 +27,8 @@
             </div>
             <div class="col-sm-8">
                 <div class="jumbotron" style="background:transparent !important" id="profileText">
-                    <h3><b>Articles</b></h3>
-                    <div class="articles">
+                    <h3 class="header"><b>Articles</b></h3>
+                    <td class="articles">
                         <table class="table table-hover table-striped table-bordered table-condensed">
                             <thead>
                             <tr class="info header">
@@ -38,10 +38,12 @@
                             </tr>
                             </thead>
                             @foreach($articles as $article)
-                                <tr class="content">
-                                    <td>{{$article->title}}</td>
-                                    <td>{{$article->created_at->format('m/d/Y')}}</td>
-                                    <td>{{$article->tag_list}}</td>
+                                <tr class="clickable-row" data-href="/articles/{{$article->id}}">
+                                    <a href="/articles/"{{$article->id}}>
+                                        <td>{{$article->title}}</td>
+                                        <td>{{$article->created_at->format('m/d/Y')}}</td>
+                                        <td>{{$article->tag_list}}</td>
+                                    </a>
                                 </tr>
                             @endforeach
                         </table>
@@ -50,6 +52,13 @@
             </div>
         </div>
     </div>
+<script>
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
+    });
+</script>
 <style>
     h1 {
         text-align: center;
@@ -64,7 +73,7 @@
         text-align: center;
     }
 
-    .content {
+    .clickable-row {
         text-align: center;
     }
 
