@@ -35,9 +35,9 @@ class ProfilesController extends Controller
     public function store(Request $request)
     {
         $user = \Auth::user()->profiles()->create($request->all());
-        flash()->success('Your profile has been created!');
 
-        return redirect('articles');
+
+        return redirect()->back();
     }
 
     /**
@@ -64,7 +64,7 @@ class ProfilesController extends Controller
         $user = \Auth::user()->profiles()->update($request->except('_token'));
         flash()->success('Your profile has been updated!');
 
-        return redirect('articles');
+        return redirect()->back();
     }
 
     /**

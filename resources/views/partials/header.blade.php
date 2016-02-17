@@ -22,12 +22,11 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href=/profiles/index/{{ ucfirst(\Auth::user()->id) }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             {{ ucfirst(\Auth::user()->name) }}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/profiles/index/{{ \Auth::user()->id }}">Profile</a></li>
                             <li><a href="#editProfile" data-toggle="modal">Edit Profile</a></li>
                         </ul>
                     </li>
@@ -41,34 +40,7 @@
     </nav>
     <br/>
     <!-- Modal window for editing profile. -->
-    <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="vertical-alignment-helper">
-            <div class="modal-dialog vertical-align-center">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Edit Your Profile</h4>
-
-                    </div>
-                    <!-- Form submission sent to profile/index/{id} for creation -->
-                    <div class="modal-body">
-                        {!! Form::open(['url' => $profileURL]) !!}
-                        {!! Form::label('location', 'Location:') !!}
-                        {!! Form::text('location', null, ['class' => 'form-control']) !!}
-                        {!! Form::label('profile', 'Bio:') !!}
-                        {!! Form::textarea('profile', null, ['class' => 'form-control', 'placeholder' => 'Write here...']) !!}
-                    </div>
-                    <div class="modal-footer">
-                        {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
-                        {!! Form::submit('Save Changes', ['id' => 'littleButton', 'class' => 'btn btn-primary']) !!}
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('profiles/edit')
 @else
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
