@@ -8,7 +8,8 @@ class Profile extends Model
 {
 
     protected $fillable= [
-        'profile'
+        'profile',
+        'location'
     ];
     /**
      * The database table used by the model.

@@ -52,8 +52,11 @@
                         <h4 class="modal-title" id="myModalLabel">Edit Your Profile</h4>
 
                     </div>
+                    <!-- Form submission sent to profile/index/{id} for creation -->
                     <div class="modal-body">
                         {!! Form::open(['url' => $profileURL]) !!}
+                        {!! Form::label('location', 'Location:') !!}
+                        {!! Form::text('location', null, ['class' => 'form-control']) !!}
                         {!! Form::label('profile', 'Bio:') !!}
                         {!! Form::textarea('profile', null, ['class' => 'form-control', 'placeholder' => 'Write here...']) !!}
                     </div>
