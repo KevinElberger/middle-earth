@@ -10,18 +10,46 @@
 
                 </div>
                 <!-- Form submission sent to profile/index/{id} for creation -->
-                <div class="modal-body">
-                    {!! Form::model($prof, ['method' => 'POST', 'action' => ['ProfilesController@update']]) !!}
-                    {!! Form::label('location', 'Location:') !!}
-                    {!! Form::text('location', null, ['class' => 'form-control']) !!}
-                    {!! Form::label('profile', 'Bio:') !!}
-                    {!! Form::textarea('profile', null, ['class' => 'form-control', 'placeholder' => 'Write here...']) !!}
-                </div>
-                <div class="modal-footer">
-                    {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
-                    {!! Form::submit('Save Changes', ['id' => 'littleButton', 'class' => 'btn btn-primary']) !!}
-                    {!! Form::close() !!}
-                </div>
+                @if(!empty($prof))
+                    <div class="modal-body">
+                        {!! Form::model($prof, ['method' => 'POST', 'action' => ['ProfilesController@update']]) !!}
+                        {!! Form::label('location', 'Location:') !!}
+                        {!! Form::text('location', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('profile', 'Bio:') !!}
+                        {!! Form::textarea('profile', null, ['class' => 'form-control', 'placeholder' => 'Write here...']) !!}
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
+                        {!! Form::submit('Save Changes', ['id' => 'littleButton', 'class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                @elseif(!empty(\Auth::user()->profiles()->get()->last()))
+                    <div class="modal-body">
+                        {!! Form::model(\Auth::user()->profiles()->get()->last(), ['method' => 'POST', 'action' => ['ProfilesController@update']]) !!}
+                        {!! Form::label('location', 'Location:') !!}
+                        {!! Form::text('location', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('profile', 'Bio:') !!}
+                        {!! Form::textarea('profile', null, ['class' => 'form-control', 'placeholder' => 'Write here...']) !!}
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
+                        {!! Form::submit('Save Changes', ['id' => 'littleButton', 'class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                @else
+                    <div class="modal-body">
+                        {!! Form::open(['url' => $profileURL]) !!}
+                        {!! Form::label('location', 'Location:') !!}
+                        {!! Form::text('location', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('profile', 'Bio:') !!}
+                        {!! Form::textarea('profile', null, ['class' => 'form-control', 'placeholder' => 'Write here...']) !!}
+                    </div>
+                    <div class="modal-footer">
+                        {!! Form::button('Close', ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) !!}
+                        {!! Form::submit('Save Changes', ['id' => 'littleButton', 'class' => 'btn btn-primary']) !!}
+                        {!! Form::close() !!}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
