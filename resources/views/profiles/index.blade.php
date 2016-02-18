@@ -33,7 +33,7 @@
                             <thead>
                             <tr class="info header">
                                 <td><b>Article</b></td>
-                                <td><b>Created At</b></td>
+                                <td><b>Created On</b></td>
                                 <td><b>Tag</b></td>
                             </tr>
                             </thead>

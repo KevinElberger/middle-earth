@@ -63,6 +63,13 @@
                     $(".clickable-row").click(function() {
                         window.document.location = $(this).data("href");
                     });
+
+                    $('#like').click(function() {
+                        $(this).removeClass('btn-default');
+                        $(this).addClass('btn-info');
+                        $('#likeIcon').removeClass('glyphicon-heart-empty');
+                        $('#likeIcon').addClass('glyphicon-heart');
+                    });
                 </script>
         </body>
     </html>
@@ -84,12 +91,8 @@
         left: 0;
         background-repeat: repeat;
         background-attachment: scroll;
-        background-position: 0% 0%;
+        /*background-position: 0% 0%;*/
         position: fixed;
-    }
-
-    li {
-        text-align: center;
     }
 
     .container {

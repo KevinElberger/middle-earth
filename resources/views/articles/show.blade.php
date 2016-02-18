@@ -3,6 +3,9 @@
 @section('content')
     <br />
     <h1>{{ $article->title }}</h1>
+    <button id="like" class="btn btn-sm btn-with-count btn-default"><span id="likeIcon" class="glyphicon glyphicon-heart-empty"></span>Like</button>
+
+    <div id="share"></div>
     <hr />
         <article>
             {{ $article->body }}
@@ -22,7 +25,7 @@
 
         <div id="created_at">
             <p>
-                Article created on: {{ $article->created_at }}
+                Article created on: {{ $article->created_at->format('m/d/Y') }}
             </p>
         </div>
     </div>
