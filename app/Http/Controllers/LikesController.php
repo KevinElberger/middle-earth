@@ -9,79 +9,33 @@ use App\Http\Controllers\Controller;
 
 class LikesController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * If a User likes an Article, associate the Like with the user and the Article.
      *
-     * @return \Illuminate\Http\Response
+     * @param $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function index()
-    {
-        //
+    public function like($request) {
+        // Create the like for the user and the article
+        \Auth::user()->likes()->create($request->all());
+
+        return redirect()->back();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * If a User unlikes an Article, find the Article with the User ID &
+     * Article ID and delete it.
      *
-     * @return \Illuminate\Http\Response
+     * @param $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function create()
-    {
-        //
-    }
+    public function unlike($request) {
+        $like = new Like;
+        $user = \Auth::user();
+        $article = $request['article_id'];
+        $like->where('user_id', $user->id)->where('article_id', $article)->delete();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back();
     }
 }

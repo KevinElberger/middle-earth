@@ -48,4 +48,13 @@ class Article extends Model
 
         $this->belongsTo('App\User');
     }
+
+    /**
+     * An article has many likes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function likes() {
+        return $this->hasMany('App\Likes');
+    }
 }
