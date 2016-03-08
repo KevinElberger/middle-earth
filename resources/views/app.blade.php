@@ -23,7 +23,7 @@
 
                 <div class="footer-right">
 
-                    {{-- Maybe for future use --}}
+                     {{--Maybe for future use--}}
 
                     {{--<a href="#"><i class="fa fa-facebook"></i></a>--}}
                     {{--<a href="#"><i class="fa fa-twitter"></i></a>--}}

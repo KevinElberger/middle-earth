@@ -28,6 +28,11 @@
                 Article created on: {{ $article->created_at->format('m/d/Y') }}
             </p>
         </div>
+
+        {{-- If current User's ID is listed in the article likes array --}}
+        @if (in_array(\Auth::user()->id, $article->likes->lists('user_id')))
+
+        @endif
     </div>
 @stop
 

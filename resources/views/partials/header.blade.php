@@ -88,4 +88,19 @@
     .dropdown-menu {
         margin-top: 0px;
     }
+
+    .navbar-brand{
+        font-weight: 400;
+        font-family: 'Ubuntu', sans-serif;
+        font-size:15px;
+    }
+
+    .nav span[class="custom"] :hover,
+
+    .navbar{
+        background-color:black;
+        opacity:0.8;
+        border:0;
+    }
+
 </style>
