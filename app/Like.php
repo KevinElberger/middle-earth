@@ -8,7 +8,6 @@ class Like extends Model
 {
     protected $fillable = ['user_id', 'article_id'];
 
-    protected $table = 'likes';
     /**
      * Each like is owned by many users.
      *

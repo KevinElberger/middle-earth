@@ -7,7 +7,6 @@ class CreateLikesTable extends Migration
 {
 
     protected $fillable = array(
-        'id',
         'user_id',
         'article_id'
         // mass assign
@@ -24,6 +23,7 @@ class CreateLikesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('article_id')->unsigned();
+            $table->nullableTimestamps();
 
             $table->foreign('user_id')
                   ->references('id')
@@ -44,6 +44,6 @@ class CreateLikesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('likes');
     }
 }

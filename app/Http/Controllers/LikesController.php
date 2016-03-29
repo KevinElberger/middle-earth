@@ -18,7 +18,8 @@ class LikesController extends Controller
      */
     public function like($request) {
         // Create the like for the user and the article
-        \Auth::user()->likes()->create($request->all());
+        $like = new \App\Like;
+        $like->create(['user_id' => \Auth::user()->id, 'article_id' => $request]);
 
         return redirect()->back();
     }
@@ -31,10 +32,10 @@ class LikesController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function unlike($request) {
-        $like = new Like;
-        $user = \Auth::user();
-        $article = $request['article_id'];
-        $like->where('user_id', $user->id)->where('article_id', $article)->delete();
+        $user = \Auth::user()->id;
+        $article = $request;
+        $like = \App\Like::where((['user_id' => $user, 'article_id' => $article]));
+        $like->delete();
 
         return redirect()->back();
     }

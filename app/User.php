@@ -63,6 +63,6 @@ class User extends Model implements AuthenticatableContract,
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function likes() {
-        return $this->hasmany('App\Likes');
+        return $this->hasmany('App\Like');
     }
 }

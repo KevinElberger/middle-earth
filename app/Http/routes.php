@@ -11,6 +11,8 @@ Route::post('pages/profile/store', 'PagesController@store');
 Route::get('profiles/index/{id}', 'ProfilesController@index');
 Route::post('profiles/index/{id}', 'ProfilesController@store');
 Route::post('profiles/update', 'ProfilesController@update');
+Route::post('/articles/{id}/like', 'LikesController@like');
+Route::post('/articles/{id}/unlike', 'LikesController@unlike');
 Route::resource('articles', 'ArticlesController');
 
 Route::controllers([
