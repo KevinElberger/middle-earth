@@ -6,6 +6,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css" />
+        <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+
     </head>
         <body>
             @include('partials.header')
@@ -91,7 +97,7 @@
         left: 0;
         background-repeat: repeat;
         background-attachment: scroll;
-        /*background-position: 0% 0%;*/
+        background-position: 0% 0%;
         position: fixed;
     }
 

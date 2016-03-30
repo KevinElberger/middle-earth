@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -17,8 +18,8 @@ class ProfilesController extends Controller
     {
         $user = \App\User::where(['id' => $idNum])->get()->first();
         $prof = \App\Profile::where(['user_id' => $idNum])->get()->last();
-        $articles = \App\Article::where(['user_id' => $idNum])->get();
 
+        $articles = Article::where(['user_id' => $idNum])->latest()->simplePaginate(6);
         $url = 'http://www.gravatar.com/avatar/';
         $url .= md5( strtolower(trim($user['email'])));
         $url .= "?s=80&d=mm&r=g";

@@ -28,38 +28,45 @@
             <div class="col-sm-8">
                 <div class="jumbotron" style="background:transparent !important" id="profileText">
                     <h3 class="header"><b>Articles</b></h3>
-                    <td class="articles">
-                        <table class="table table-hover table-striped table-bordered table-condensed">
-                            <thead>
-                            <tr class="info header">
-                                <td><b>Article</b></td>
-                                <td><b>Created On</b></td>
-                                <td><b>Tag</b></td>
-                            </tr>
-                            </thead>
-                            @foreach($articles as $article)
-                                <tr class="clickable-row" data-href="/articles/{{$article->id}}">
-                                    <a href="/articles/"{{$article->id}}>
-                                        <td>{{$article->title}}</td>
-                                        <td>{{$article->created_at->format('m/d/Y')}}</td>
-                                        <td>{{$article->tag_list}}</td>
-                                    </a>
-                                </tr>
-                            @endforeach
-                        </table>
+                    <div class="mdl-grid">
+                    @foreach($articles->all() as $article)
+                        <div onclick="location.href='/articles/{{$article->id}}'"
+                             class="redirect mdl-js-button mdl-js-ripple-effect mdl-card mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-shadow--4dp card-1">
+                            <div class="mdl-card__title mdl-typography--regular-1"><p>{{ $article->title }}</p></div><br />
+                            <a class="mdl-button mdl-button--colored mdl-js-ripple-effect" href="/articles/{{ $article->id }}">Read More</a>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <div class="mdl-layout-spacer">
+                                    <div class="mdl-typography--regular-1">{{ $result = count($article->likes->lists('user_id')->toArray()) }}
+                                        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>'s
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<script>
-    jQuery(document).ready(function($) {
-        $(".clickable-row").click(function() {
-            window.document.location = $(this).data("href");
-        });
-    });
-</script>
 <style>
+    .mdl-card__title {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mdl-layout-spacer {
+        padding-top: 5px;
+        margin-top: 5px;
+    }
+
+    .card-1 {
+        transition: all 0.2s ease-in-out;
+    }
+
+    .card-1:hover {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+
     h1 {
         text-align: center;
     }
@@ -79,6 +86,20 @@
 
     .col-sm-4 {
         padding-right: 0 !important;
+    }
+
+    .mdl-card__title {
+        text-align: center;
+    }
+
+    .mdl-grid {
+        text-align: center;
+    }
+
+    .mdl-card__actions {
+        display: flex;
+        box-sizing:border-box;
+        align-items: center;
     }
 
     #profileText {
