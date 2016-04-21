@@ -26,7 +26,7 @@ class ArticlesController extends Controller
      * @return \Illuminate\View\View
      */
     public function index() {
-        $articles = Article::latest()->simplePaginate(9);
+        $articles = Article::latest()->simplePaginate(8);
 
         return view('articles.index', compact('articles'));
     }

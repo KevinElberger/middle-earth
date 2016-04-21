@@ -14,7 +14,7 @@
     </div><!--end about info-->
     <!--Start founders name and images-->
     <div class="founders">
-        <p>The Team<p>
+        <p>THE TEAM<p>
         <div class="Linh">
             <div class="image1">
                 <img src="{{ asset('assets/images/jesse.jpg') }}" >
@@ -56,12 +56,13 @@
 
 <style>
     body{
-        background-image:url("/assets/images/shattered.png");
+        background-image:url("/assets/images/dark_Tire.png");
     }
     .title h1{
         width:1000px;
         margin-top:100px;
         margin-left:180px;
+        color:white;
     }
 
     .linh{
@@ -72,6 +73,7 @@
         font-size:15px;
         font-weight: 300;
         margin-left:220px;
+        color:white;
     }
     .kevin{
         border:none;
@@ -83,6 +85,7 @@
         font-family:‘Metrophobic’, Arial, serif;
         font-size:15px;
         font-weight: 300;
+        color:white;
     }
     .gaby{
         border:none;
@@ -94,6 +97,7 @@
         font-family:‘Metrophobic’, Arial, serif;
         font-size:15px;
         font-weight: 300;
+        color:white;
     }
 
     .renzhi{
@@ -106,6 +110,7 @@
         font-family:‘Metrophobic’, Arial, serif;
         font-size:15px;
         font-weight: 300;
+        color:white;
     }
     .andre{
         border:none;
@@ -117,6 +122,7 @@
         font-family:‘Metrophobic’, Arial, serif;
         font-size:15px;
         font-weight: 300;
+        color:white;
     }
 
     .image{
@@ -127,8 +133,9 @@
         font-family: ‘Metrophobic’, Arial, serif;
         font-weight: 400;
         margin-top:50px;
-        margin-left:480px;
+        margin-left:460px;
         font-size:35px;
+        color:white;
     }
 
     .top{
@@ -150,6 +157,7 @@
         font-weight: 400;
         margin-top:20px;
         margin-left:50px;
+        color:white;
     }
 
     .info2 p{
@@ -159,15 +167,17 @@
         font-weight: 400;
         margin-top:-210px;
         margin-left:580px;
+        color:white;
     }
 
     .founders p{
         width:400px;
         font-family:‘Metrophobic’, Arial, serif;
+        color:white;
         font-size:35px;
         font-weight: 400;
-        margin-left:480px;
-        margin-top:100px;
+        margin-left:450px;
+        margin-top:50px;
     }
 
 </style>
