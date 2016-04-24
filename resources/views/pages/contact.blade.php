@@ -45,7 +45,7 @@
         </div>
 
     </div>
-
+@endsection
     <style>
         body{
             background-color:black;

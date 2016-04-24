@@ -22,12 +22,12 @@
                 @yield('content')
 
 
-            @yield('footer')
-            </div>
+            {{--@yield('footer')--}}
+            {{--</div>--}}
 
-            <footer class="footer-distributed">
+            {{--<footer class="footer-distributed">--}}
 
-                <div class="footer-right">
+                {{--<div class="footer-right">--}}
 
                      {{--Maybe for future use--}}
 
@@ -36,22 +36,22 @@
                     {{--<a href="#"><i class="fa fa-linkedin"></i></a>--}}
                     {{--<a href="#"><i class="fa fa-github"></i></a>--}}
 
-                </div>
+                {{--</div>--}}
 
-                <div class="footer-left">
+                {{--<div class="footer-left">--}}
 
-                    <p class="footer-links">
-                        <a href="#">Home</a>
-                        ·
-                        <a href="/about">About</a>
-                        ·
-                        <a href="/contact">Contact</a>
-                    </p>
+                    {{--<p class="footer-links">--}}
+                        {{--<a href="#">Home</a>--}}
+                        {{--·--}}
+                        {{--<a href="/about">About</a>--}}
+                        {{--·--}}
+                        {{--<a href="/contact">Contact</a>--}}
+                    {{--</p>--}}
 
-                    <p>Middle Earth &copy; 2015</p>
-                </div>
+                    {{--<p>Middle Earth &copy; 2015</p>--}}
+                {{--</div>--}}
 
-            </footer>
+            {{--</footer>--}}
                 <script src="//code.jquery.com/jquery.js"></script>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -87,18 +87,6 @@
     }
     body {
         margin: 0 0 140px; /* bottom = footer height */
-    }
-    footer {
-        /*position: absolute;*/
-        padding-top: 10px;
-        height: 140px;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        background-repeat: repeat;
-        background-attachment: scroll;
-        background-position: 0% 0%;
-        position: fixed;
     }
 
     .container {

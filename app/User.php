@@ -65,4 +65,13 @@ class User extends Model implements AuthenticatableContract,
     public function likes() {
         return $this->hasmany('App\Like');
     }
+
+    /**
+     * A user has many comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
 }

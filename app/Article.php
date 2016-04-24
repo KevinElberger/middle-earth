@@ -57,4 +57,13 @@ class Article extends Model
     public function likes() {
         return $this->hasMany('App\Like');
     }
+
+    /**
+     * An article has many comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
 }

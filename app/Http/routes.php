@@ -13,6 +13,7 @@ Route::post('profiles/index/{id}', 'ProfilesController@store');
 Route::post('profiles/update', 'ProfilesController@update');
 Route::post('/articles/{id}/like', 'LikesController@like');
 Route::post('/articles/{id}/unlike', 'LikesController@unlike');
+Route::post('/articles/{id}/comment', 'CommentsController@store');
 Route::resource('articles', 'ArticlesController');
 
 Route::controllers([
