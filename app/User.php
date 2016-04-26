@@ -74,4 +74,13 @@ class User extends Model implements AuthenticatableContract,
     public function comments() {
         return $this->hasMany('App\Comment');
     }
+
+    /**
+     * A user has many replies.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies() {
+        return $this->hasMany('App\Replies');
+    }
 }

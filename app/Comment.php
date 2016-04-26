@@ -25,4 +25,13 @@ class Comment extends Model
     public function articles() {
         return $this->hasOne('App\Article');
     }
+
+    /**
+     * Each comment may have many replies.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies() {
+        return $this->hasMany('App\Reply');
+    }
 }

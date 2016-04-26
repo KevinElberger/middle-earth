@@ -59,6 +59,7 @@
         @if(!$article->comments->isEmpty())
             <summary style="padding: 1em;"><b>{{count($article->comments)}} Comments</b></summary>
             <ul id="lastComment" class="list-group">
+                {{-- Display comments if article has any --}}
                 @foreach($article->comments as $c)
                     <div id="urlForPic">
                         {{ $url = 'http://www.gravatar.com/avatar/'}}
@@ -74,7 +75,20 @@
 							    <li><a class="reply{{$c->id}}" id="reply{{$c->id}}" href="#{{$c->id}}Comment">Reply</a></li>
                             </ul>
                         </span>
-                        <div id="{{$c->id}}Comment"></div>
+                        <div id="wrap">
+                            <div id="{{$c->id}}Comment">
+                                {!! Form::open(['url' => 'articles/'. $article->id . '/reply', 'method' => 'POST']) !!}
+                                {!! Form::hidden('comment_id', $c->id) !!}
+                            </div>
+                                {!! Form::close() !!}
+
+                            {{-- Check if comment has any replies and display them. --}}
+                            @if(!$c->replies->isEmpty())
+                                @foreach($replies as $r)
+
+                                @endforeach
+                            @endif
+                        </div>
                     </li>
                 @endforeach
             </ul>
