@@ -59,7 +59,7 @@ class CommentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $commentid
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $commentid)
