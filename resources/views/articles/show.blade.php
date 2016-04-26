@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
     <br />
     <h1>{{ $article->title }}</h1>
     @if($article->likes->isEmpty())
@@ -49,13 +48,16 @@
     </div><br/>
     <h3>Leave A Comment</h3>
     <div class="card paper">
-        {!! Form::open(['url' => 'articles/'. $article->id . '/comment', 'method' => 'POST']) !!}
-        {!! Form::hidden('article_id', $article->id) !!}
-        {!! Form::text('comment', null, ['class' => 'form-control', 'placeholder' => 'Add a comment']) !!}
-        {!! Form::submit('Post', ['class' => 'btn btn-sm btn-success']) !!}
-        {!! Form::close() !!}
+        <fieldset class="form-group">
+            <!-- Form for posting comments on an article. -->
+            {!! Form::open(['url' => 'articles/'. $article->id . '/comment', 'method' => 'POST']) !!}
+            {!! Form::hidden('article_id', $article->id) !!}
+            {!! Form::text('comment', null, ['class' => 'form-control', 'placeholder' => 'Add a comment', 'required']) !!}
+            {!! Form::submit('Post', ['class' => 'btn btn-sm btn-success']) !!}
+            {!! Form::close() !!}
+        </fieldset>
         @if(!$article->comments->isEmpty())
-            <summary style="padding: 1em;">{{count($article->comments)}} Comments</summary>
+            <summary style="padding: 1em;"><b>{{count($article->comments)}} Comments</b></summary>
             <ul id="lastComment" class="list-group">
                 @foreach($article->comments as $c)
                     <div id="urlForPic">
@@ -68,13 +70,18 @@
                         <span class="title">{{ucfirst(\App\User::where(['id' => $c->user_id])->get()->first()->name)}}
                             <time>{{$c->created_at}}</time>
                             <p>{{$c->comment}}</p>
+                            <ul class="actions" href="#">
+							    <li><a class="reply{{$c->id}}" id="reply{{$c->id}}" href="#{{$c->id}}Comment">Reply</a></li>
+                            </ul>
                         </span>
+                        <div id="{{$c->id}}Comment"></div>
                     </li>
                 @endforeach
             </ul>
         @endif
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="/js/show.js"></script>
 @stop
 
 <style>
@@ -92,6 +99,10 @@
     }
     #created_by {
         float: right;
+    }
+    div[id*="Comment"] {
+        width: 80%;
+        margin: 0 auto;
     }
     a{
         text-decoration: none;
@@ -123,13 +134,6 @@
     details{
         background-color: #f4f4f4;
     }
-    /*summary{*/
-        /*outline: 0;*/
-        /*cursor: pointer;*/
-        /*color: rgba(0,0,0,.8);*/
-        /*font-size: 14px;*/
-    /*}*/
-
     .title{
         display: inline-block;
         margin-left: 3em;
@@ -199,23 +203,6 @@
         display:inherit;
         list-style: none;
     }
-    /*summary::after {*/
-        /*content: "expand_more";*/
-        /*font-family: 'Material Icons';*/
-        /*color:rgba(0,0,0, 1);*/
-        /*float: left;*/
-        /*font-size: 1.5em;*/
-        /*margin: 0px 10px 0 0;*/
-        /*padding: 0;*/
-        /*text-align: center;*/
-        /*left: 4.5em; top: 0.455em;*/
-        /*position: absolute;*/
-    /*}*/
-    /*details[open] summary:after {*/
-        /*color:rgba(0,0,0, 1);*/
-        /*content: "expand_less";*/
-        /*font-family: 'Material Icons';*/
-    /*}*/
     #lastComment{
         background-color: #f4f4f4;
     }

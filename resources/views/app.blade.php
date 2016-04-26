@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
         <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css" />
@@ -22,36 +22,7 @@
                 @yield('content')
 
 
-            {{--@yield('footer')--}}
-            {{--</div>--}}
-
-            {{--<footer class="footer-distributed">--}}
-
-                {{--<div class="footer-right">--}}
-
-                     {{--Maybe for future use--}}
-
-                    {{--<a href="#"><i class="fa fa-facebook"></i></a>--}}
-                    {{--<a href="#"><i class="fa fa-twitter"></i></a>--}}
-                    {{--<a href="#"><i class="fa fa-linkedin"></i></a>--}}
-                    {{--<a href="#"><i class="fa fa-github"></i></a>--}}
-
-                {{--</div>--}}
-
-                {{--<div class="footer-left">--}}
-
-                    {{--<p class="footer-links">--}}
-                        {{--<a href="#">Home</a>--}}
-                        {{--·--}}
-                        {{--<a href="/about">About</a>--}}
-                        {{--·--}}
-                        {{--<a href="/contact">Contact</a>--}}
-                    {{--</p>--}}
-
-                    {{--<p>Middle Earth &copy; 2015</p>--}}
-                {{--</div>--}}
-
-            {{--</footer>--}}
+            </div>
                 <script src="//code.jquery.com/jquery.js"></script>
                 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -60,7 +31,7 @@
                     $('#tag_list').select2({
                         placeholder: 'Choose a tag',
                         tags: false,
-                        maximumSelectionLength: 1,
+                        maximumSelectionLength: 1
                     });
 
                     $('div.alert').not('.alert-important').delay(3000).slideUp(400);
