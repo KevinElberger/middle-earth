@@ -75,22 +75,32 @@
 							    <li><a class="reply{{$c->id}}" id="reply{{$c->id}}" href="#{{$c->id}}Comment">Reply</a></li>
                             </ul>
                         </span>
-                        <div id="wrap">
+                        <div id="innerWrap">
+                            {!! Form::open(['url' => 'articles/'. $article->id . '/comment/' . $c->id, 'method' => 'PATCH']) !!}
+                            {!! Form::hidden('comment_id', $c->id) !!}
                             <div id="{{$c->id}}Comment">
-                                {!! Form::open(['url' => 'articles/'. $article->id . '/reply', 'method' => 'POST']) !!}
-                                {!! Form::hidden('comment_id', $c->id) !!}
                             </div>
                                 {!! Form::close() !!}
-
                             {{-- Check if comment has any replies and display them. --}}
                             @if(!$c->replies->isEmpty())
-                                @foreach($replies as $r)
-
+                                @foreach($c->replies as $r)
+                                    <div id="urlForPic">
+                                        {{ $urlRep = 'http://www.gravatar.com/avatar/'}}
+                                        {{ $urlRep .= md5( strtolower(trim(\App\User::where(['id' => $r->user_id])->get()->first()->email)))}}
+                                        {{ $urlRep .= "?s=80&d=mm&r=g"}}
+                                    </div>
+                                        <li class="list-group-item" style="margin: 0 auto; width: 80%;">
+                                            <span class="circle"><img src="{{$urlRep}}"> </span>
+                                            <span class="title">{{ucfirst(\App\User::where(['id' => $r->user_id])->get()->first()->name)}}
+                                            <time>{{$r->created_at}}</time>
+                                            <p>{{$r->comment}}</p>
+                                            </span>
+                                        </li>
                                 @endforeach
                             @endif
+                @endforeach
                         </div>
                     </li>
-                @endforeach
             </ul>
         @endif
     </div>
@@ -113,6 +123,10 @@
     }
     #created_by {
         float: right;
+    }
+    #innerWrap {
+        width: 80%;
+        margin: 0 auto;
     }
     div[id*="Comment"] {
         width: 80%;

@@ -62,9 +62,14 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $commentid)
     {
-        //
+        $reply = new \App\Reply;
+        $reply->create(['user_id' => \Auth::user()->id, 'comment_id' => $request['comment_id'], 'comment' => $request['comment']]);
+        $comment = \App\Comment::where(['id' => $commentid])->get()->first();
+        $comment->reply = $reply;
+
+        return redirect()->back();
     }
 
     /**

@@ -37,10 +37,7 @@ class RepliesController extends Controller
      */
     public function store(Request $request)
     {
-        $reply = new \App\Reply;
-        $reply->create(['user_id' => \Auth::user()->id, 'comment_id' => $request['comment_id'], 'comment' => $request['comment']]);
-
-        return redirect()->back();
+        //
     }
 
     /**
