@@ -25,11 +25,11 @@
         <div class="message">
             <div class="title"><h1>Send us a Message</h1></div>
             <div class="form">
-                <form>
+                <form action="MAILTO:middle.earth480@gmail.com" method="POST" enctype="text/plain">
                     <input type="text" placeholder="Name">
                     <input type="email" placeholder="Email">
                     <textarea type="text" placeholder="Message"></textarea>
-                    <button id="button" type="button">Submit</button>
+                    <button id="button" type="submit">Submit</button>
                 </form>
             </div>
         </div>
