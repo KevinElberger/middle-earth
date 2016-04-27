@@ -18,13 +18,14 @@ class ProfilesController extends Controller
     {
         $user = \App\User::where(['id' => $idNum])->get()->first();
         $prof = \App\Profile::where(['user_id' => $idNum])->get()->last();
-
+        $auth = \Auth::user()->id;
+        $authProf = \App\Profile::where(['user_id' => $auth])->get()->last();
         $articles = Article::where(['user_id' => $idNum])->latest()->simplePaginate(6);
         $url = 'http://www.gravatar.com/avatar/';
         $url .= md5( strtolower(trim($user['email'])));
         $url .= "?s=80&d=mm&r=g";
 
-        return view('profiles/index', compact ('user', 'url', 'prof', 'articles'));
+        return view('profiles/index', compact ('user', 'url', 'prof', 'articles', 'auth', 'authProf'));
     }
 
     /**

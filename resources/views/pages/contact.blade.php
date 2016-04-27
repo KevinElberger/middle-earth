@@ -25,12 +25,12 @@
         <div class="message">
             <div class="title"><h1>Send us a Message</h1></div>
             <div class="form">
-                <form action="MAILTO:middle.earth480@gmail.com" method="POST" enctype="text/plain">
-                    <input type="text" placeholder="Name">
+                {!! Form::open(['url' => 'contact', 'method' => 'POST']) !!}
+                    <input type="text" name="name" placeholder="Name">
                     <input type="email" placeholder="Email">
-                    <textarea type="text" placeholder="Message"></textarea>
+                    <textarea name="message" placeholder="Message"></textarea>
                     <button id="button" type="submit">Submit</button>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
 
@@ -49,7 +49,7 @@
     <style>
         body{
             background-color:black;
-            background-image:url("/assets/images/dark_Tire.png")
+            background-image:url("/assets/images/dark_Tire.png");
 
         }
 

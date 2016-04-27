@@ -15,23 +15,16 @@ class PagesController extends Controller
     }
 
     public function contact() {
+
         return view('pages/contact');
     }
 
-//    /**
-//     * Retrieves profile view for selected user.
-//     *
-//     * @param $name
-//     * @return \Illuminate\View\View
-//     */
-//    public function user($idNum) {
-//        $user = \App\User::where(['id' => $idNum])->get()->first();
-//
-//
-//        $url = 'http://www.gravatar.com/avatar/';
-//        $url .= md5( strtolower(trim($user['email'])));
-//        $url .= "?s=80&d=mm&r=g";
-//
-//        return view('pages/profile', compact('user', 'url'));
-//    }
+    public function mail(Request $request) {
+        $to = "kevelberger@gmail.com";
+        $subject = $request['name'];
+        $message = $request['message'];
+        mail($to,$subject,$message);
+
+        return redirect()->back();
+    }
 }

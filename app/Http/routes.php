@@ -5,6 +5,7 @@ Route::get('/', function() {
 });
 Route::get('about', 'PagesController@about');
 Route::get('contact', 'PagesController@contact');
+Route::post('contact', 'PagesController@mail');
 Route::get('pages/profile/{id}', 'PagesController@user');
 Route::post('pages/profile/store', 'PagesController@store');
 

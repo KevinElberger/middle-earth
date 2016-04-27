@@ -39,6 +39,7 @@
         </div>
     </nav>
     <br/>
+{{--    {{dd($auth)}}--}}
     <!-- Modal window for editing profile. -->
     @include('profiles/edit')
 @else
