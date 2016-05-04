@@ -1,5 +1,6 @@
 @extends('app')
-    <div class="container-fluid">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+<div class="container-fluid">
         <br />
         <br />
         <div class="row">
@@ -15,8 +16,15 @@
                             <p><small>Location: N/A</small></p>
                         @endif
                         <p><small><span class="glyphicon glyphicon-user"></span> Joined on: {{ $user->created_at->format('m/d/Y') }}</small></p>
+                        <div id="followStats">
+                            <p><b>900</b></p>
+                            <p class="flow-text thin"><small>Followers</small></p>
+                        </div>
+                        <div id="follow">
+                            <p><a class="waves-effect waves-light btn"><i class="material-icons">person_add</i> Follow</a></p>
+                        </div>
                         <hr />
-                        <h3><b>Bio</b></h3>
+                        <h3 style="text-align: center;">Bio</h3>
                         @if(is_null($prof))
                             <p>There's nothing here! Edit your profile to add a bio.</p>
                         @else
@@ -53,12 +61,16 @@
         flex-direction: column;
         text-align: center;
     }
-
+    p.thin {
+        font-weight: 200;
+    }
     .mdl-layout-spacer {
         padding-top: 5px;
         margin-top: 5px;
     }
-
+    .btn {
+        line-height: 1.0 !important;
+    }
     .card-1 {
         transition: all 0.2s ease-in-out;
     }
@@ -101,7 +113,9 @@
         box-sizing:border-box;
         align-items: center;
     }
-
+    #follow {
+        text-align: center;
+    }
     #profileText {
         width: 80%;
         margin-left: 0;
