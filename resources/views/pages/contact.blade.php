@@ -25,12 +25,10 @@
         <div class="message">
             <div class="title"><h1>Send us a Message</h1></div>
             <div class="form">
-                {!! Form::open(['url' => 'contact', 'method' => 'POST']) !!}
                     <input type="text" name="name" placeholder="Name">
                     <input type="email" placeholder="Email">
                     <textarea name="message" placeholder="Message"></textarea>
                     <button id="button" type="submit">Submit</button>
-                {!! Form::close() !!}
             </div>
         </div>
 
