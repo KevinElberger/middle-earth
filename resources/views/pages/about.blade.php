@@ -1,13 +1,13 @@
 @extends('app')
 
-<div class="title"><h1>"The Goal of Middle Earth.. Create, Explore, Interact"</h1></div>
 <div class="container">
-
+    <div class="title"><h2>"The Goal of Middle Earth.. Create, Explore, Interact"</h2></div>
     <!--start about info-->
     <div class="top"></div>
-    <div class="aboutus"><p>ABOUT US</p></div>
+    <div class="aboutus">
+        <p>ABOUT US</p></div>
     <div class="info">
-        <p>Middle Earth was created by a group of Senior IT students in California State University Northridge as a Senior project. Middle Earth is an interactive user-based blogging website that allows people to create blog posts that can be viewed by anyone. Each blog can also have certain tags added to them to help others identify what the posts are about, whether it be about food,</p>
+        <p>Middle Earth was created by a group of Senior IT students in California State University Northridge as a Senior project. Middle Earth is an interactive user-based blogging website that allows people to create blog posts that can be viewed by anyone. Each blog can also have certain tags added to them to help others identify what the posts are about, whether it be about food,</p><br/>
         <div class="info2">
             <p> programming, work or other things; this helps people determine if they want to read the post or not. The main page of the website displays all the blogs posted by users, starting by listing the most recent posts and descending down to the first post ever made. All the posts are displayed in a paginated way that simplifies browsing for articles.</p>
         </div>
@@ -58,10 +58,11 @@
     body{
         background-image:url("/assets/images/dark_Tire.png");
     }
-    .title h1{
-        width:1000px;
+    .title h2 {
+        width:100%;
+        /*text-align: center;*/
         margin-top:100px;
-        margin-left:180px;
+        /*margin-left:180px;*/
         color:white;
     }
 
@@ -129,7 +130,7 @@
         border:2px solid green;
         width:180px;
     }
-    .aboutus{
+    .aboutus p {
         font-family: ‘Metrophobic’, Arial, serif;
         font-weight: 400;
         margin-top:50px;
